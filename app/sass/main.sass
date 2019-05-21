@@ -1,0 +1,309 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+%clearfix
+	*zoom: 1
+	&:before, &:after
+		content: " "
+		display: table
+	&:after
+		clear: both
+
+=link($link, $visit, $hover, $active)
+	a
+		text-decoration: none
+		color: $link
+		&:visited
+			color: $visit
+		&:hover
+			color: $hover
+		&:active
+			color: $active
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent-color
+	color: #fff
+
+body
+	font-size: 16px
+	min-width: 480px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow-x: hidden
+	color: $text-color
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: red
+		&:required:valid
+			border-color: green
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+
++link($text-color, $text-color, $accent-color, $accent-color)
+//$link, $visit, $hover, $active
+
+ul
+	list-style-type: none
+	padding-inline-start: 0
+
+button, button:active, button:focus, button:hover
+	outline: 0
+	text-decoration: none
+	border: 0
+	background-color: unset
+
+.button
+	background: linear-gradient(to bottom,#fff176,#ffca28)
+	cursor: pointer
+	border: 0 none
+	border-bottom: 7px solid #d8a508
+	font-weight: bold
+	letter-spacing: 0.04em
+	text-transform: uppercase
+	text-align: center
+
+.header
+	position: relative
+	width: 100vw
+	background: #555 url("../img/design/header.jpg") no-repeat center
+	background-size: cover
+	@extend %clearfix
+	&-overlay
+		position: absolute
+		width: 100%
+		height: 100%
+		background: radial-gradient(circle farthest-corner at 50% 30%, rgba(#fff,1), rgba(#fff,0.5))
+	&-line
+		position: relative
+		z-index: 10
+		padding: 3em 0
+		display: flex
+		flex-flow: row wrap
+		justify-content: space-around
+		&-item
+			margin-bottom: 1em
+		&-logo img
+			width: 250px
+		&-menu
+			display: flex
+			flex-flow: row wrap
+			justify-content: space-between
+			&-link
+				width: 22%
+				height: 2em
+				@for $i from 1 through 4
+					&:nth-child(#{$i})
+						border-bottom: 1px solid #959595
+		&-contact
+			&-tel
+				font-size: 22px
+				font-weight: bold
+				.fa-phone
+					width: 30px
+					height: 30px
+					border: 1px solid #000
+					border-radius: 15px
+					line-height: 30px
+					text-align: center
+					margin-right: .5em
+			&-button
+				width: 180px
+				border-radius: 20px
+				height: 40px
+				font-size: .9em
+				line-height: 40px
+				margin-left: 3em
+	&-title
+		position: relative
+		z-index: 10
+		margin: 1em 0
+		font-size: 2.3em
+		font-weight: bold
+		color: $accent-color
+		text-transform: uppercase
+		text-align: center
+	&-work
+		position: relative
+		z-index: 10
+		display: flex
+		justify-content: center
+		&-item
+			width: 220px
+			text-align: center
+			margin: 1em
+			&-img
+				margin: 1em
+			&-title
+				font-size: 1.1em
+				font-weight: bold
+				text-transform: uppercase
+				line-height: 1.2
+			&-desc
+	&-footer
+		position: relative
+		z-index: 10
+		display: flex
+		justify-content: center
+		margin: 55px 0
+		&-button
+			width: 400px
+			border-radius: 30px
+			height: 60px
+			font-size: 1em
+			line-height: 60px
+
+
+.main
+	width: 100%
+	background: #555 url("../img/design/bg-main.png")
+	@extend %clearfix
+	&:after
+		clear: both
+	&-title
+		font-size: 2em
+		font-weight: bold
+		text-transform: uppercase
+		margin: 35px 0
+		text-align: center
+	&-slider
+		width: 90%
+		margin: 0 auto 35px
+		.owl-carousel
+			.owl-item
+				& + div
+					width: 100%
+				.img
+					float: left
+				.desc
+					display: flex
+					flex-wrap: wrap
+					flex-direction: column
+					align-content: space-between
+					align-items: flex-start
+					height: 100%
+					padding: 2em
+					float: left
+					&-title
+						font-weight: bold
+					&-text
+						font-size: .9em
+					&-buy
+						display: flex
+						justify-content: flex-start
+						align-items: center
+						font-weight: bold
+						margin: 1em 0
+						&-price
+							margin-right: 1em
+						&-money
+							font-size: 2em
+							color: $accent-color
+							margin-right: 1em
+						&-button
+							width: 200px
+							border-radius: 30px
+							height: 60px
+							font-size: 1em
+							line-height: 60px
+			.owl-controls
+				float: left
+				background-size: cover
+			.owl-dots
+				display: flex
+				justify-content: space-between
+				align-items: center
+			.owl-dot
+				float: left
+				background-size: cover
+				&.active
+					box-shadow: 0 0 0 2px white, 0 0 0 4px $accent-color
+				&:hover
+					box-shadow: 0 0 0 2px white, 0 0 0 4px $accent-color
+		.owl-nav
+			margin-top: 10px
+			text-align: center
+			-webkit-tap-highlight-color: transparent
+			[class*='owl-']
+				position: absolute
+				width: 60px
+				top: 34%
+				font-size: 75px
+				z-index: 20
+				cursor: pointer
+				color: #000
+				transition: color .3s ease
+				border: 0
+				background: none
+			[class*='owl-']:hover
+				color: $accent-color
+			.owl-prev
+				left: 0px
+			.owl-next
+				right: 0px
+				text-align: right
+			.disabled
+				opacity: 0.5
+				cursor: default
+			&.disabled + .owl-dots
+				margin-top: 10px
+
+
+.footer
+	width: 100%
+	background: linear-gradient(to top,#33a8f7,#2579bf)
+	+link(#fff, #fff, #fff, #fff)
+	color: #fff
+	font-weight: 200
+	font-size: 1.1em
+	@extend %clearfix
+	&-items
+		display: flex
+		justify-content: space-around
+		flex-wrap: wrap
+	&-item
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+		align-items: flex-start
+		flex-basis: 20%
+		padding: 2em 1em
+		&-title
+			width: 100%
+			border-bottom: 1px solid rgba(#fff, .5)
+	&-logo
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		align-items: flex-end
+		flex-wrap: wrap
+		img
+			width: 180px
+		&-soc
+			span
+				padding-right: .5em
+	&-menu
+		&-link
+			width: 100%
+			border-bottom: 1px solid rgba(#fff, .5)
+			&:last-child
+				border: none
+
+@import "media" // Always at the end

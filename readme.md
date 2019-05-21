@@ -10,6 +10,6 @@
 
 Применялись: html • sass • gulp • jquery
 
-Результат верстки →(http://temp.phomka.ru/evro-siling/)
+Результат верстки → (http://temp.phomka.ru/evro-siling/)
 
 [Мое резуме →](http://phomka.ru/resume.html)
